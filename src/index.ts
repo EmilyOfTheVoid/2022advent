@@ -11,29 +11,30 @@ const questions = [
         name: 'day',
         message: 'what day do you want to run?',
         type: 'list',
-        choices: ["Day 1", "Day 2", "Day 3", "Day 4"]
+        choices: Array.from(new Array(24), (x, i) => i+1)
     },
 ];
 
-const handler = async (answers: Answer) => {
-    let answer1: string = 'not yet done';
-    let answer2: string = 'not yet done';
-    switch (answers.day) {
-        case 'Day 1': {
-            const { default: run1 } = await import('./day1/prob1.js');
-            answer1 = await run1();
-            const { default: run2 } = await import('./day1/prob2.js');
-            answer2 = await run2();
-            break; 
-        }
-        case 'Day 2': {
-            const { default: run1 } = await import('./day2/prob1.js');
-            answer1 = await run1();
-            const { default: run2 } = await import('./day2/prob2.js');
-            answer2 = await run2();
-            break; 
-        }
+const handler = async (answer: Answer) => {
+    let answer1: string;
+    let answer2: string;
+
+    const problem1Filename = `./day${answer.day}/prob1.js`;
+    const problem2Filename = `./day${answer.day}/prob2.js`;
+    try {
+        const { default: run1 } = await import(problem1Filename);
+        answer1 = await run1();
+    } catch(e) {
+        answer1 = 'not yet started';
     }
+
+    try {
+        const { default: run2 } = await import(problem2Filename);
+        answer2 = await run2();
+    } catch(e) {
+        answer2 = 'not yet started';
+    }
+
     console.log(chalk.blue.bold(answer1));
     console.log(chalk.blue.bold(answer2));
     await keypress();

@@ -1,5 +1,5 @@
 type Answer = {
-    day: string
+    day: number
 };
 
 export default Answer;
