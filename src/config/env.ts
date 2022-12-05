@@ -1,0 +1,1 @@
+export const LOCAL_DOMAIN = 'http://localhost:1337'
