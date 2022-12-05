@@ -5,13 +5,16 @@ import clear from 'clear';
 import chalk from 'chalk';
 import keypress from './utils/keypress.js';
 
+//utils
+import range from './utils/range.js';
+
 // run cli
 const questions = [
     {
         name: 'day',
         message: 'what day do you want to run?',
         type: 'list',
-        choices: Array.from(new Array(24), (x, i) => i+1)
+        choices: range(24)
     },
 ];
 
