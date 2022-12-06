@@ -1,4 +1,3 @@
-import express from 'express';
 import inquirer from 'inquirer';
 import Answer from './models/Answer.js';
 import clear from 'clear';
@@ -59,11 +58,4 @@ const startInquirer = async () => {
         .catch(() => console.log('uh oh! something went wrong!'));
 }
 
-
-// file server
-const app = express();
-app.use(express.static('assets'))
-app.listen(1337, () => { 
-    console.log('listening on port 1337!');
-    startInquirer();
- });
+startInquirer();

@@ -1,18 +1,17 @@
-import fetch from 'node-fetch';
-import { LOCAL_DOMAIN } from '../config/env.js'
+import { readInput } from '../utils/puzzle.js';
 import sum from '../utils/sum.js';
 
 async function run(): Promise<string> {
     //setup
-    const puzzleinput = fetch(`${LOCAL_DOMAIN}/day2.txt`);
-    const response = await puzzleinput;
-    const body = await response.text();
+    const body = await readInput('day2');
 
     //work
     const matches = body.split(/\r\n/);
     const points: [number, number][] = matches.map(match => {
         const pairs = match.split(/ /);
+        
         if (pairs.length !== 2) throw new Error('bad input');
+
         const attempt: [number, number] = [theirValues[pairs[0]], myValues[pairs[1]]];
         const myScore: number = battleMap[attempt[1]][attempt[0]];
         return [attempt[1], myScore];

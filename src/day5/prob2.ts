@@ -1,8 +1,8 @@
-import { getInput } from '../utils/puzzle.js'
+import { readInput } from '../utils/puzzle.js';
 
 async function run(): Promise<string | number> {
     //setup
-    const input = await getInput('day5');
+    const input = await readInput('day5');
     const [rawCrateData, rawOperationData] =  input.split(/\r?\n\r?\n/);
 
     const stackMap = parseStacks(rawCrateData);

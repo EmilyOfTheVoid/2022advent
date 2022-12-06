@@ -1,11 +1,8 @@
-import fetch from 'node-fetch';
-import { LOCAL_DOMAIN } from '../config/env.js'
+import { readInput } from '../utils/puzzle.js';
 
 async function run(): Promise<string> {
     //setup
-    const puzzleinput = fetch(`${LOCAL_DOMAIN}/day4.txt`);
-    const response = await puzzleinput;
-    const body = await response.text();
+    const body = await readInput('day4');
 
     //work
     const elfPairs = body.split(/\r\n/);

@@ -1,8 +1,8 @@
-import fetch from 'node-fetch';
-import { LOCAL_DOMAIN } from '../config/env.js'
+import { promises } from 'fs'
 
-export const getInput = async (inputFile: string) :Promise<string> => {
-    const puzzleinput = fetch(`${LOCAL_DOMAIN}/${inputFile}.txt`);
-    const response = await puzzleinput;
-    return await response.text();
+const readInput = async (inputFile: string): Promise<string> => {
+    const data = await promises.readFile(`./assets/${inputFile}.txt`);
+    return data.toString();
 }
+
+export { readInput };
