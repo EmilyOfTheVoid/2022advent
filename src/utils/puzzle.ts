@@ -5,4 +5,9 @@ const readInput = async (inputFile: string): Promise<string> => {
     return data.toString();
 }
 
-export { readInput };
+const getBuffer = async (inputFile: string): Promise<ArrayBuffer> => {
+    const data = await promises.readFile(`./assets/${inputFile}.txt`);
+    return data;
+}
+
+export { readInput, getBuffer };

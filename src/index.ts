@@ -15,7 +15,7 @@ const questions = [
         message: 'what day do you want to run?',
         type: 'list',
         choices: range(24),
-        default: 4
+        default: 5
     },
 ];
 

@@ -3,17 +3,19 @@ import { readInput } from '../utils/puzzle.js';
 async function run(): Promise<string | number> {
     const data = await readInput('day6');
     const markerLength = 14;
-    const marker = new Set();
-    let i = markerLength - 1;
-    while (marker.size < markerLength && i < data.length) {
+    let i = markerLength;
+    while(i < data.length) {
+        const segment = data.slice(i - markerLength, i);
+        if(!hasDupe(segment)) break;
         i++
-        marker.clear();
-        const set = data.slice(i-markerLength, i);
-        set.split('').map(a => marker.add(a));
     }
-
-    //work
+    
     return i;
+}
+
+const hasDupe = (chars: string): boolean => {
+    const marker = new Set([...chars]);
+    return marker.size < chars.length;
 }
 
 export default run;
