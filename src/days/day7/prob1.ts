@@ -1,4 +1,4 @@
-import { readInput } from '../utils/puzzle.js'
+import { readInput } from '../../utils/puzzle.js'
 
 class File {
     readonly fileName: string;
@@ -71,10 +71,10 @@ async function run(): Promise<string | number> {
     }
 
     // work
-    const currentUnusedSpace = 70000000 - baseDir.totalFileSize();
-    const extraSpaceNeeded = 30000000 - currentUnusedSpace;
-    const dirsInRange = allDirs.map(dir => dir.totalFileSize()).filter(dir => dir > extraSpaceNeeded);
-    return Math.min(...dirsInRange)
+    return allDirs.reduce((acc, cur) => {
+        const curSize = cur.totalFileSize();
+        return curSize > 100000 ? acc :  curSize + acc;
+    }, 0);
 };
 
 const traverse = (command: string, currentDir: Directory, baseDir: Directory): Directory => {

@@ -1,4 +1,4 @@
-import { readInput } from '../utils/puzzle.js';
+import { readInput } from '../../utils/puzzle.js';
 
 async function run(): Promise<number> {
     const body = await readInput('day1');

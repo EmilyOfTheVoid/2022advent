@@ -15,7 +15,7 @@ const questions = [
         message: 'what day do you want to run?',
         type: 'list',
         choices: range(24),
-        default: 5
+        default: 7
     },
 ];
 
@@ -23,8 +23,8 @@ const handler = async (answer: Answer) => {
     let answer1: string;
     let answer2: string;
 
-    const problem1Filename = `./day${answer.day}/prob1.js`;
-    const problem2Filename = `./day${answer.day}/prob2.js`;
+    const problem1Filename = `./days/day${answer.day}/prob1.js`;
+    const problem2Filename = `./days/day${answer.day}/prob2.js`;
 
     try {
         const { default: run1 } = await import(problem1Filename);

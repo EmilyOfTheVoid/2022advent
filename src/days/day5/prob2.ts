@@ -1,4 +1,4 @@
-import { readInput } from '../utils/puzzle.js';
+import { readInput } from '../../utils/puzzle.js';
 
 async function run(): Promise<string | number> {
     //setup

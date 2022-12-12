@@ -1,5 +1,5 @@
-import { readInput } from '../utils/puzzle.js';
-import sum from '../utils/sum.js';
+import { readInput } from '../../utils/puzzle.js';
+import sum from '../../utils/sum.js';
 
 async function run(): Promise<string> {
     //setup
